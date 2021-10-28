@@ -16,8 +16,6 @@ public class GameFlow
 
     public GameFlow(LevelLoader levelLoader, LevelSettingsSO levelSettings)
     {
-        _selectedGameItems = new List<GameItem>();
-
         _levelLoader = levelLoader;
         _levelSettings = levelSettings;
 
@@ -26,6 +24,7 @@ public class GameFlow
 
     public void StartGame()
     {
+        _selectedGameItems = new List<GameItem>();
         _gameItems = _levelLoader.LoadLevel(_levelSettings);
         _turn = 0;
 
@@ -57,9 +56,9 @@ public class GameFlow
         if (_selectedGameItems.Count == 2)
         {
             SwapSelectedGameItems();
-            bool isGameWon =CheckWinCondition();
-            if(isGameWon) return;
-            
+            bool isGameWon = CheckWinCondition();
+            if (isGameWon) return;
+
             _turn++;
             CheckGameOverCondition();
         }
